@@ -46,6 +46,7 @@ import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -57,10 +58,6 @@ import javax.swing.table.TableColumnModel;
 
 public class GC_ESports_GUI extends javax.swing.JFrame 
 {
-    public static void main(String[] args)
-        {
-
-        }
 
     // private data
     // for storing comp results
@@ -310,7 +307,7 @@ public class GC_ESports_GUI extends javax.swing.JFrame
             // Assuming `competitions` is a List of Competition objects
             for (Competition competition : competitions) 
             {
-                bufferedWriter.write(competition.toCSVString());
+                bufferedWriter.write(competition.toString());
                 bufferedWriter.newLine();
             }
         }
@@ -357,7 +354,7 @@ public class GC_ESports_GUI extends javax.swing.JFrame
             // Assuming `teams` is a List of Team objects
             for (Team team : teams) 
             {
-                bufferedWriter.write(team.toCSVString());
+                bufferedWriter.write(team.toString());
                 bufferedWriter.newLine();
             }
         }
@@ -890,60 +887,61 @@ public class GC_ESports_GUI extends javax.swing.JFrame
     Outputs:    void
     *******************************************************************/
     private void addNewCompResult_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewCompResult_jButtonActionPerformed
-        // TODO add your handling code here:
-        // newCompDate_JTextField
-        // newCompLocation_JTextField
-        // newCompGame_JTextField
-        // newCompPoints_JTextField
-        if (validateNewCompResult() == true)
-        {
-           private void addNewCompResult_jButtonActionPerformed(java.awt.event.ActionEvent evt) {  
-    // Call the validation method
-    if (validateNewCompResult()) /* TO DO
+    // TODO add your handling code here:
+    // newCompDate_JTextField
+    // newCompLocation_JTextField
+    // newCompGame_JTextField
+    // newCompPoints_JTextField
+    if (validateNewCompResult() == true)
     {
-        // Retrieve the validated input data
-        String date = newCompDate_JTextField.getText();
-        String location = newCompLocation_JTextField.getText();
-        String game = newCompGame_JTextField.getText();
-        String pointsStr = newCompPoints_JTextField.getText();
-        int points = Integer.parseInt(pointsStr);
+    //    private void addNewCompResult_jButtonActionPerformed(java.awt.event.ActionEvent evt);
+    }
+    // Call the validation method
+    if (validateNewCompResult()) 
+    {
+        // // Retrieve the validated input data
+        // String date = newCompDate_JTextField.getText();
+        // String location = newCompLocation_JTextField.getText();
+        // String game = newCompGame_JTextField.getText();
+        // String pointsStr = newCompPoints_JTextField.getText();
+        // int points = Integer.parseInt(pointsStr);
 
-        // Define the path to the Excel file
-        String filePath = "path/to/your/excel-file.xlsx";
+        // // Define the path to the Excel file
+        // String filePath = "path/to/your/excel-file.xlsx";
 
-        try (FileInputStream fis = new FileInputStream(filePath);
-             Workbook workbook = WorkbookFactory.create(fis)) {
+        // try (FileInputStream fis = new FileInputStream(filePath);
+        //      Workbook workbook = WorkbookFactory.create(fis)) {
             
-            Sheet sheet = workbook.getSheetAt(0); // Get the first sheet
+        //     Sheet sheet = workbook.getSheetAt(0); // Get the first sheet
 
-            // Find the next empty row
-            int lastRowNum = sheet.getLastRowNum();
-            Row newRow = sheet.createRow(lastRowNum + 1);
+        //     // Find the next empty row
+        //     int lastRowNum = sheet.getLastRowNum();
+        //     Row newRow = sheet.createRow(lastRowNum + 1);
 
-            // Create cells and set their values
-            newRow.createCell(0).setCellValue(date);
-            newRow.createCell(1).setCellValue(location);
-            newRow.createCell(2).setCellValue(game);
-            newRow.createCell(3).setCellValue(points);
+        //     // Create cells and set their values
+        //     newRow.createCell(0).setCellValue(date);
+        //     newRow.createCell(1).setCellValue(location);
+        //     newRow.createCell(2).setCellValue(game);
+        //     newRow.createCell(3).setCellValue(points);
 
-            // Write the changes back to the file
-            try (FileOutputStream fos = new FileOutputStream(filePath)) {
-                workbook.write(fos);
-            }
+        //     // Write the changes back to the file
+        //     try (FileOutputStream fos = new FileOutputStream(filePath)) {
+        //         workbook.write(fos);
+        //     }
 
-            JOptionPane.showMessageDialog(null, "Data added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        //     JOptionPane.showMessageDialog(null, "Data added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Failed to update Excel file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }*/
+        // } catch (IOException e) {
+        //     JOptionPane.showMessageDialog(null, "Failed to update Excel file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        // }
+    }
 }
 
             
-        }
+    
         
         
-    }//GEN-LAST:event_addNewCompResult_jButtonActionPerformed
+    //GEN-LAST:event_addNewCompResult_jButtonActionPerformed
 
     /*******************************************************************
     Method:     formWindowClosing()
