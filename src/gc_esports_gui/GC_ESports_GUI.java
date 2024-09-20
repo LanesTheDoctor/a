@@ -50,6 +50,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -867,10 +869,18 @@ public class GC_ESports_GUI extends javax.swing.JFrame
     *******************************************************************/
     private void updateTeam_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updateTeam_JComboBoxItemStateChanged
         // TODO add your handling code here:
-        if (comboBoxStatus == true)
-        {
-            displayTeamDetails();
-        }
+
+        
+    // if (validateExistingTeam() == true)
+    // {
+    
+    // }
+    
+    // if (validateExistingTeam()) 
+    // {
+    //     // look here
+        
+    // }
     }//GEN-LAST:event_updateTeam_JComboBoxItemStateChanged
 
     /*******************************************************************
@@ -888,52 +898,34 @@ public class GC_ESports_GUI extends javax.swing.JFrame
     *******************************************************************/
     private void addNewCompResult_jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewCompResult_jButtonActionPerformed
     // TODO add your handling code here:
-    // newCompDate_JTextField
-    // newCompLocation_JTextField
-    // newCompGame_JTextField
-    // newCompPoints_JTextField
-    if (validateNewCompResult() == true)
-    {
-    //    private void addNewCompResult_jButtonActionPerformed(java.awt.event.ActionEvent evt);
-    }
-    // Call the validation method
+
     if (validateNewCompResult()) 
     {
-        // // Retrieve the validated input data
-        // String date = newCompDate_JTextField.getText();
-        // String location = newCompLocation_JTextField.getText();
-        // String game = newCompGame_JTextField.getText();
-        // String pointsStr = newCompPoints_JTextField.getText();
-        // int points = Integer.parseInt(pointsStr);
+        // Retrieve the validated input data
+        String game = newCompGame_JTextField.getText();
+        String date = newCompDate_JTextField.getText();
+        String location = newCompLocation_JTextField.getText();
+        String team = newCompResult_JComboBox.getSelectedItem().toString();
+        String pointsStr = newCompPoints_JTextField.getText();
+        int points = Integer.parseInt(pointsStr);
 
-        // // Define the path to the Excel file
-        // String filePath = "path/to/your/excel-file.xlsx";
-
-        // try (FileInputStream fis = new FileInputStream(filePath);
-        //      Workbook workbook = WorkbookFactory.create(fis)) {
+        // LANES MAKE SURE THIS DIALOGUE IS CORRECT
+        int yesOrNo = JOptionPane.showConfirmDialog 
+        (null, "You are about to add a new competition for " + game + "\nDo you wish to proceed? Yes or No?", "ADD NEW COMPETITION", JOptionPane.YES_NO_OPTION);
             
-        //     Sheet sheet = workbook.getSheetAt(0); // Get the first sheet
+        if (yesOrNo == JOptionPane.YES_OPTION)
+        {
+            // add the new team to the teams ArrayList<Team>
+            competitions.add(new Competition(game, date, location, team, points));
 
-        //     // Find the next empty row
-        //     int lastRowNum = sheet.getLastRowNum();
-        //     Row newRow = sheet.createRow(lastRowNum + 1);
-
-        //     // Create cells and set their values
-        //     newRow.createCell(0).setCellValue(date);
-        //     newRow.createCell(1).setCellValue(location);
-        //     newRow.createCell(2).setCellValue(game);
-        //     newRow.createCell(3).setCellValue(points);
-
-        //     // Write the changes back to the file
-        //     try (FileOutputStream fos = new FileOutputStream(filePath)) {
-        //         workbook.write(fos);
-        //     }
-
-        //     JOptionPane.showMessageDialog(null, "Data added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-
-        // } catch (IOException e) {
-        //     JOptionPane.showMessageDialog(null, "Failed to update Excel file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        // }
+            // update the new team name in the
+            displayTeams();
+        }
+        else
+        {
+            // add new team cancelled
+        }
+        System.out.println(competitions);
     }
 }
 
@@ -941,7 +933,7 @@ public class GC_ESports_GUI extends javax.swing.JFrame
     
         
         
-    //GEN-LAST:event_addNewCompResult_jButtonActionPerformed
+//GEN-LAST:event_addNewCompResult_jButtonActionPerformed
 
     /*******************************************************************
     Method:     formWindowClosing()
