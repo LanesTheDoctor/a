@@ -28,6 +28,17 @@ public class Competition
         this.team = team;
         this.points = points;
     }
+    
+    //secondary constructor
+    public Competition(String game, String team)
+    {
+        this.game = game;
+        this.competitionDate = "N/A"; // Default value
+        this.location = "N/A";         // Default value
+        this.team = team;
+        this.points = 0;               // Default points
+    }
+    
     //  get methods for each private data field
     public String getGame()
     {
