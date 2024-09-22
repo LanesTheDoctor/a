@@ -925,7 +925,7 @@ public class GC_ESports_GUI extends javax.swing.JFrame
         {
             // add new team cancelled
         }
-        System.out.println(competitions);
+        
     }
 }
 
