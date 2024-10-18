@@ -50,6 +50,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -870,17 +871,11 @@ public class GC_ESports_GUI extends javax.swing.JFrame
     private void updateTeam_JComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updateTeam_JComboBoxItemStateChanged
         // TODO add your handling code here:
 
-        
-    // if (validateExistingTeam() == true)
-    // {
-    
-    // }
-    
-    // if (validateExistingTeam()) 
-    // {
-    //     // look here
-        
-    // }
+        if (comboBoxStatus == true)
+        {
+            displayTeamDetails();
+        }
+
     }//GEN-LAST:event_updateTeam_JComboBoxItemStateChanged
 
     /*******************************************************************
@@ -1255,9 +1250,34 @@ public class GC_ESports_GUI extends javax.swing.JFrame
     *******************************************************************/
     private void displayLeaderBoard()
     {
-        String leaderBoardDisplayStr = "TEAM\t\tTotal Points";
+           String leaderBoardDisplayStr = "TEAM\t\tTotal Points";
+       JOptionPane.showMessageDialog(null, leaderBoardDisplayStr, "TEAMS LEADER BOARD", JOptionPane.INFORMATION_MESSAGE);
         
-        JOptionPane.showMessageDialog(null, leaderBoardDisplayStr, "TEAMS LEADER BOARD", JOptionPane.INFORMATION_MESSAGE);
+        
+    // Call to read competition data to ensure points are populated
+    readCompetitionData(); // Ensure this populates the teams with points
+
+    
+
+    // Retrieve the list of teams after reading the competition data
+    List<Team> treams = Team.teamName(); // Adjust this based on your actual method to retrieve teams
+
+    // Sort teams by points in descending order
+    teams.sort((t1, t2) -> Integer.compare(t2.getPoints(), t1.getPoints()));
+
+    // Append team names and their points to the display string
+    for (Team team : teams) {
+        leaderBoardDisplayStr.append(team.getTeamName()).append("\t\t").append(team.getPoints()).append("\n");
+    }
+
+    // Now display the completed leaderboard in a popup
+    JOptionPane.showMessageDialog(null, leaderBoardDisplayStr.toString(), "TEAMS LEADER BOARD", JOptionPane.INFORMATION_MESSAGE);
+
+
+    
+
+
+        
     }
     /*******************************************************************
     Method:     main()

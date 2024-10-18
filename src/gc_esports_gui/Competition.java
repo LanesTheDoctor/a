@@ -28,7 +28,7 @@ public class Competition
         this.team = team;
         this.points = points;
     }
-    
+   
     //secondary constructor
     public Competition(String game, String team)
     {
